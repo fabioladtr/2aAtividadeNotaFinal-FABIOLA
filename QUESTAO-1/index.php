@@ -1,6 +1,7 @@
 <?php
-require'db.php';
-$estoque = $db->query("SELECT * FROM estoque");
+
+require'database.php';
+$livros = $db->query("SELECT * FROM livros");
 ?>
 
 <!DOCTYPE html>
@@ -12,15 +13,17 @@ $estoque = $db->query("SELECT * FROM estoque");
 </head>
 <body>
 
-<h1>EStoque Interno</h1>
+<h1>Estoque Interno</h1>
 
 <ul>
-    <?php while ($estoque = $estoque->fetchArray(SQLITE3_ASSOC)):?>
+    <?php while ($livros = $livros->fetchArray(SQLITE3_ASSOC)):?>
         <li>
-            <?= htmlspecialchars($estoque['titulo']) ?> - <?= htmlspecialchars($estoque['autor']) ?>
-            <a href="excluir.php?id=<?= $estoque['id'] ?>">[Excluir]</a>
+            <?= htmlspecialchars($livros['titulo']) ?> - <?= htmlspecialchars($livros['autor']) ?>
+            <a href="excluir.php?id=<?= $livros['id'] ?>">[Excluir]</a>
         </li>
-    <?php endwhile; ?>
+    <?php endwhile; 
+    
+    ?>
 </ul>
 
 <h2>Adiconar Livro</h2>
